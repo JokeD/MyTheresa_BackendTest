@@ -141,9 +141,6 @@ In order to scale at 20.000  products I will suggest to use ElasticSearch.
 
 The insertion off products can be improved doing an async job queue's.
 
-
-
-
 ### Installation
 
 Browse to folder :  **ops/docker/**
@@ -152,6 +149,8 @@ and then :
 ```bash
 ./init
 ```
+
+Then the dev server will be availabe to send request's to ***localhost:8001/products***
 
 (Optionally) Manually steps can be called :
 
@@ -175,8 +174,6 @@ Run integration and units tests
 ./tests
 ```
 
-
 ### REST - Usage
 
 A Postman Collection included at project root level : MyTheresa.postman_collection.json
-
