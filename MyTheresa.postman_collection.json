@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "83e24bdb-5586-4025-ac79-50717b8d3d95",
+		"name": "MyTheresa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9393455"
+	},
+	"item": [
+		{
+			"name": "Add Products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"products\": [\n{\n\"sku\": \"000001\",\n\"name\": \"BV Lean leather ankle boots\",\n\"category\": \"boots\",\n\"price\": 89000\n},\n{\n\"sku\": \"000002\",\n\"name\": \"BV Lean leather ankle boots\",\n\"category\": \"boots\",\n\"price\": 99000\n},\n{\n\"sku\": \"000003\",\n\"name\": \"Ashlington leather ankle boots\",\n\"category\": \"boots\",\n\"price\": 71000\n},\n{\n\"sku\": \"000004\",\n\"name\": \"Naima embellished suede sandals\",\n\"category\": \"sandals\",\n\"price\": 79500\n},{\n\"sku\": \"000005\",\n\"name\": \"Nathane leather sneakers\",\n\"category\": \"sneakers\",\n\"price\": 59000\n}\n]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8001/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8001/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "priceLessThan",
+							"value": "79500",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

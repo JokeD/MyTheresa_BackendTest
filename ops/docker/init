@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+./down && \
+./up && \
+./composer install && \
+echo Waiting to db load && sleep 5 && \
+./console doctrine:schema:update --force && \
+./console doctrine:schema:update --force --env=test && \
+./test
+

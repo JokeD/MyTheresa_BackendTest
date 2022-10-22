@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+docker-compose -f 'compose/docker-compose.dev.yml' up -d $@
+

@@ -1,0 +1,16 @@
+when@dev:
+    _errors:
+        resource: '@FrameworkBundle/Resources/config/routing/errors.xml'
+        prefix: /_error
+
+
+add_products:
+    path: /products
+    controller: App\Ui\Http\AddProductController::post
+    methods: POST
+
+lists_products:
+    path: /products
+    controller: App\Ui\Http\GetProductController::get
+    methods: GET
+
