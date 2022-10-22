@@ -150,7 +150,7 @@ and then :
 ./init
 ```
 
-Then the dev server will be availabe to send request's to ***localhost:8001/products***
+Then the dev server will be availabe to receive request's to ***localhost:8001/products***
 
 (Optionally) Manually steps can be called :
 
