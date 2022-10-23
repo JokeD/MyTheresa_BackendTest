@@ -27,8 +27,8 @@ class GetProductsUseCase
      * the discounts rules instead of being hardcoded here
      */
     public function execute(
-        ?string $priceLessThan,
-        ?string $category,
+        ?string $priceLessThan = null,
+        ?string $category = null,
         int $limit = 5
     ): array
     {
