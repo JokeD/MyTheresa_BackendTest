@@ -63,7 +63,7 @@ class MainIntegrationTest extends WebTestCase
         $addProductUseCase->execute((json_decode($this->dummyProducts))->products);
 
         $listProductUseCase = new GetProductsUseCase($productRepository);
-        $products = $listProductUseCase->execute(false);
+        $products = $listProductUseCase->execute();
 
         $this->assertNotEmpty($products);
 
@@ -71,9 +71,13 @@ class MainIntegrationTest extends WebTestCase
             $this->assertInstanceOf(Product::class,$product);
         }
 
-        $productLessThan = $listProductUseCase->execute(99000);
+        $productLessThan = $listProductUseCase->execute(100000);
 
-        $this->assertCount(1,$productLessThan);
+        $this->assertCount(2,$productLessThan);
+
+        $productLessThanAndCategory = $listProductUseCase->execute(99000,'boots');
+
+        $this->assertCount(1,$productLessThanAndCategory);
     }
 
 }
