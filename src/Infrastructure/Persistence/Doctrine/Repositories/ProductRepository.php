@@ -26,17 +26,27 @@ final class ProductRepository extends BaseRepository implements ProductRepositor
         $this->add($product);
     }
 
-    public function findByPriceLessThan(int $priceLessThan, ?int $limit, ?int $offset): ?array
+    public function findByPriceLessThanAndCategory(int $priceLessThan = null, string $category = null, $limit = 5): ?array
     {
-        return $this->em->createQueryBuilder()->select('j')
-            ->from(Product::class, 'j')
-            ->where("j.price.original < :identifier")
-            ->orderBy('j.id', 'ASC')
-            ->setParameter('identifier', $priceLessThan)
-            ->getQuery()
-            ->setFirstResult($offset)
+        $qb = $this->em
+            ->createQueryBuilder()
+            ->select('j')
+            ->from(Product::class, 'j');
+
+        if (!is_null($priceLessThan)) {
+            $qb
+                ->andWhere("j.price.original < :price_identifier")
+                ->setParameter('price_identifier', $priceLessThan);
+        }
+
+        if (!is_null($category)) {
+            $qb
+                ->andWhere("j.category = :category_identifier")
+                ->setParameter('category_identifier', $category);
+        }
+
+        return $qb->getQuery()
             ->setMaxResults($limit)
             ->getResult();
     }
-
 }

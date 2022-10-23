@@ -27,18 +27,12 @@ class GetProductsUseCase
      * the discounts rules instead of being hardcoded here
      */
     public function execute(
-        int $priceLessThan,
-        ?array $orderBy = null,
-        $limit = null,
-        $offset = null
+        ?string $priceLessThan,
+        ?string $category,
+        int $limit = 5
     ): array
     {
-
-        if (!$priceLessThan) {
-            $products = $this->productRepository->findBy([], $orderBy, $limit, $offset);
-        } else {
-            $products = $this->productRepository->findByPriceLessThan($priceLessThan, $limit, $offset);
-        }
+        $products = $this->productRepository->findByPriceLessThanAndCategory($priceLessThan, $category, $limit);
 
         $appliedDiscountsProducts = [];
 

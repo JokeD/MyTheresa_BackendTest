@@ -8,5 +8,5 @@ interface ProductRepositoryInterface
 {
     public function update(Product $product): void;
 
-    public function findByPriceLessThan(int $priceLessThan, ?int $limit, ?int $offset): ?array;
+    public function findByPriceLessThanAndCategory(int $priceLessThan, string $category = null, $limit = 5): ?array;
 }

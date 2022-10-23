@@ -21,13 +21,12 @@ final class GetProductController extends RequestValidator
 
     public function get(Request $request): JsonResponse
     {
-        $orderBy  = [];
-        $limit    = 5;
-        $offset   = 0;
 
-        $priceLessThan  = (int)$request->get('priceLessThan') ?? null;
+        $priceLessThan = $request->get('priceLessThan');
+        $category      = $request->get('category');
 
-        $products = $this->getProductsUseCase->execute($priceLessThan, $orderBy, $limit, $offset);
+        $products = $this->getProductsUseCase->execute($priceLessThan, $category);
+
         return new JsonResponse($products, 200);
     }
 }

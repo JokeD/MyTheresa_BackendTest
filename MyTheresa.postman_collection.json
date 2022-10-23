@@ -39,7 +39,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8001/products",
+					"raw": "localhost:8001/products?priceLessThan=90000&category=boots",
 					"host": [
 						"localhost"
 					],
@@ -50,8 +50,11 @@
 					"query": [
 						{
 							"key": "priceLessThan",
-							"value": "79500",
-							"disabled": true
+							"value": "90000"
+						},
+						{
+							"key": "category",
+							"value": "boots"
 						}
 					]
 				}
