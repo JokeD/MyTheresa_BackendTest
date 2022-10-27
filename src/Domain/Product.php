@@ -84,18 +84,23 @@ class Product implements \JsonSerializable
 
         foreach ($this->discounts as $discount) {
 
-            $priceDiscountApplied  = is_null($discount) ? $this->price()->original() : $discount->apply($this);
+            $priceDiscountApplied = is_null($discount)
+                ? $this->price()->original()
+                : $discount->apply($this);
+
             $applicableDiscounts[] =
                 [
                     'price' => $priceDiscountApplied,
-                    'type'  => $priceDiscountApplied !== $this->price()->original() ? $discount->discountType() : null
+                    'type'  => $priceDiscountApplied !== $this->price()->original()
+                        ? $discount->discountType()
+                        : null
                 ];
         }
         usort($applicableDiscounts, fn($a, $b) => $a['price'] <=> $b['price']);
         return $applicableDiscounts[0];
     }
 
-    public function jsonSerialize() : mixed
+    public function jsonSerialize(): mixed
     {
         return [
             'sku'      => $this->sku(),
