@@ -5,6 +5,8 @@ declare(strict_types = 1);
 namespace App\Domain;
 
 
+use App\Domain\Shared\TriggerEvents;
+
 class Product implements \JsonSerializable
 {
     private int $id;
@@ -14,6 +16,7 @@ class Product implements \JsonSerializable
     private Price $price;
     private array $discounts;
 
+    use TriggerEvents;
 
     public function __construct(
         string $sku,
@@ -28,6 +31,8 @@ class Product implements \JsonSerializable
         $this->name      = $name;
         $this->price     = $price;
         $this->discounts = $discounts;
+
+        $this->record(new ProductWasCreated($this));
     }
 
     /**
