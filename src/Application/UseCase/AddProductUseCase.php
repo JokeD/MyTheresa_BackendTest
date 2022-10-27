@@ -7,17 +7,21 @@ namespace App\Application\UseCase;
 
 
 use App\Application\Command\AddProductCommand;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Messenger\MessageBusInterface;
 
 class AddProductUseCase
 {
     private MessageBusInterface $messageBus;
+    private EventDispatcherInterface $eventDispatcher;
 
     public function __construct(
-        MessageBusInterface $messageBus
+        MessageBusInterface $messageBus,
+        EventDispatcherInterface $eventDispatcher,
     )
     {
         $this->messageBus = $messageBus;
+        $this->eventDispatcher = $eventDispatcher;
     }
 
     public function execute(array $products): void
