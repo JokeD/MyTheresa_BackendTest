@@ -141,6 +141,20 @@ In order to scale at 20.000  products I will suggest to use ElasticSearch.
 
 The insertion off products can be improved doing an async job queue's.
 
+### WIP
+
+Implementing domain events , the idea is to use the same command bus where doctrine transactions middleware
+is aware of flush and or rollback all in a single db transaction.
+
+The idea is to have a domain event's store where can be used by own application context or can be routed to
+a external message brokers such as AWS sqs , rabbitMQ , redis etc..
+
+Created a minimum version , the idea behind is to make it silly as simple as possible , and iterate over the concept adding more 
+features or fields to the event store such as : event version , event status, event correlation ...
+
+For this first version just tests are pending.
+
+
 ### Installation
 
 Browse to folder :  **ops/docker/**
