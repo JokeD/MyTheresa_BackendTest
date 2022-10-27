@@ -7,7 +7,7 @@ namespace App\Domain\Shared;
 
 interface DomainEvent
 {
-    public function occurredOn(): \DateTimeImmutable;
+    public function occurredOn(): \DateTime;
 
     public function jsonSerialized(): bool|string;
 }
